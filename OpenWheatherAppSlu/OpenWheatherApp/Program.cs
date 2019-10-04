@@ -4,18 +4,23 @@ using OpenWeatherApp;
 using OpenWeatherLibrary;
 
 
+
 namespace OpenWeatherApp
 {
     class Program
     {
-        static async Task Main(string[] args)
+       public static async Task Main(string[] args)
         {
-            /*part1*/
-            string weatherString = await WeatherGenerator.GetWeatherDataAsync();
+            
+            var dman = await WeatherGenerator.WeatherDataAsync();
 
-            Console.WriteLine(weatherString);
+            Console.WriteLine(dman.Temperature);
 
-           
+            Console.WriteLine(dman.Humidity);
+
+            Console.WriteLine(dman.Weather);
+
+
 
         }
 

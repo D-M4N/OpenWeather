@@ -14,15 +14,26 @@ namespace OpenWeatherApp
 {
     public class WeatherGenerator
     {
-        public static async Task<string> GetWeatherDataAsync()
+        public static async Task<WeatherInformation> WeatherDataAsync()
         {
             HttpClient httpClient = new HttpClient();
 
-            string dj = await httpClient.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?q=Cape,Town&APPID=fd7f81ee5d72a18d06fa8679619f6da7");
+            string dman = await httpClient.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?q=Cape,Town&APPID=fd7f81ee5d72a18d06fa8679619f6da7");
 
-            WeatherInfo weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(dj);
+            var weatherData = JsonConvert.DeserializeObject<WeatherInfo>(dman);
 
+
+            WeatherInformation weatherInformation = new WeatherInformation();
+
+
+            weatherInformation.Temperature = weatherData.main.temp;
+
+            weatherInformation.Humidity = weatherData.main.humidity;
+
+            
             string returnString = string.Empty;/*D-M4N T3ST1NG 4 W3@TH3R*/
+
+
 
             /* WHILE LOOP */
 
@@ -30,18 +41,18 @@ namespace OpenWeatherApp
 
             
             /*working*/
-            while (index < weatherInfo.weather.Count)
+            while (index < weatherData.weather.Count)
             {
-                returnString = weatherInfo.weather[index].main;
+                weatherInformation.Weather = weatherData.weather[index].description;
 
                 index++;
 
+                
+
             }
-         
-            return returnString;
+            return weatherInformation;
+         }
 
-
-        }
        
     }
 }
