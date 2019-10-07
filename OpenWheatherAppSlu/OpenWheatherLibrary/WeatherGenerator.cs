@@ -44,10 +44,11 @@ namespace OpenWeatherApp
             while (index < weatherData.weather.Count)
             {
                 weatherInformation.Weather = weatherData.weather[index].description;
+               
+                /* SECOND METHOD TO USE ACCESSING EVERY ITEM IN THE LIST*/
+                //  weatherInformation.Weather = weatherData.weather[0] as Weather;
 
-                index++;
-
-                
+                index++;                            
 
             }
             return weatherInformation;

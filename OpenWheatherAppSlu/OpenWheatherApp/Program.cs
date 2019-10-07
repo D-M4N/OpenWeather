@@ -14,13 +14,27 @@ namespace OpenWeatherApp
             
             var dman = await WeatherGenerator.WeatherDataAsync();
 
-            Console.WriteLine(dman.Temperature);
 
-            Console.WriteLine(dman.Humidity);
+            /*Console.BackgroundColor = ConsoleColor.Blue;*/
 
-            Console.WriteLine(dman.Weather);
+            string capeTown = "FORCAST FOR CAPE TOWN";
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (capeTown.Length / 2)) + "}", capeTown));         
+           
+            Console.WriteLine("TEMPERATURE: "+dman.Temperature);
+            Console.ForegroundColor = ConsoleColor.Red;
 
+            Console.WriteLine("HUMIDITY: "+dman.Humidity);
+            Console.ForegroundColor = ConsoleColor.Green;
 
+            Console.WriteLine("WEATHER: "+dman.Weather);
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+            string tag = "$ 😎 D-M4N 😎 $";
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (tag.Length / 2)) + "}", tag));
+            Console.Read();
+            
 
         }
 
